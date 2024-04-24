@@ -34,6 +34,18 @@ services:
       - db
     networks:
       - outstock_network
+  
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    # volumes:
+    # - ./prometheus.yaml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - app
+    networks:
+      - outstock_network
 
 networks:
   outstock_network:
